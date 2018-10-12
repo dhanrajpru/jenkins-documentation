@@ -1,0 +1,39 @@
+How to make connection between containerised master and slvae in jenkins 
+
+#  go inside the container
+   docker exec -it container name bash
+
+#  generate ssh inside the container
+   ssh-keygen -t rsa
+
+# copy the public and private key of container
+
+# comeout from the container
+  exit
+
+# paste public ssh of containerised (master) jenkins in the host's(slave) authorized key and save.
+
+# go to managejenkins/manage node, create new node
+
+# remote directory
+  /home/ubuntu/buildSlave
+
+# in Launch method,select Launch agent agents via ssh
+
+# in host give internal ip 
+
+# in Credentials click on add and select jenkins 
+
+# in add Credentials, under kind option select SSH Username with private key
+
+# give the Username
+  ubuntu
+
+# under private key select Enter directly and paste the private ssh of containerised(master) jenkins.
+
+# under Description section give some name like
+  private-jenkins
+
+# and click on add
+
+# now save and Launch the agents.
